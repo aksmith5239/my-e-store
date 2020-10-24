@@ -12,4 +12,11 @@ const sequelize = process.env.JAWSDB_URL
       },
     });
 
+//check if connection is successful
+sequelize.authenticate()
+    .then(() => console.log('Database connection made!'))
+    .catch(err => {
+      console.log(err);
+    });
+
 module.exports = sequelize;
