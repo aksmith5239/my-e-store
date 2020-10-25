@@ -52,7 +52,7 @@ router.get('/:id', (req, res) => {
       },
       {
         model: Tag,
-        as: ['tagIds'],
+        as: 'tagIds',
         required: false,
         attributes: ['id', 'tag_name'],
         through: {
