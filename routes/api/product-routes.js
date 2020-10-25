@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
     include: [
       {
         model: Category, 
-        attributes: ['category_name']
+        attributes: ['id','category_name']
       },
       {
         model: Tag,
@@ -44,11 +44,11 @@ router.get('/:id', (req, res) => {
     where: {
       id: req.params.id
     },
-    attributes: ['id', 'product_name', 'price', 'stock'],
+    attributes: ['id', 'product_name', 'price', 'stock', 'category_id'],
     include: [
       {
         model: Category, 
-        attributes: ['category_name']
+        attributes: ['id', 'category_name']
       },
       {
         model: Tag,
@@ -92,21 +92,24 @@ router.post('/', (req, res) => {
     product_name: req.body.product_name,
     price: req.body.price,
     stock: req.body.stock,
+    category_id: req.body.category_id,
     tagIds: [req.body.tag_id]
   })
-    .then((product) => {
+    .then((dbProductData) => {
       // if there's product tags, we need to create pairings to bulk create in the ProductTag model
       if (req.body.tagIds.length) {
         const productTagIdArr = req.body.tagIds.map((tag_id) => {
           return {
-            product_id: product.id,
+            product_id: dbProductData.id,
             tag_id,
           };
         });
+        
         return ProductTag.bulkCreate(productTagIdArr);
+        
       }
       // if no product tags, just respond
-      res.status(200).json(product);
+      res.status(200).json(dbProductData);
     })
     .then((productTagIds) => res.status(200).json(productTagIds))
     .catch((err) => {

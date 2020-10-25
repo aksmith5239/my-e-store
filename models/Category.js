@@ -16,6 +16,10 @@ Category.init(
     category_name: {
       type: DataTypes.STRING,
       allow_null: false
+    }, 
+    product_id: {
+      type: DataTypes.INTEGER,
+      allow_null: false
     }
 
   },
