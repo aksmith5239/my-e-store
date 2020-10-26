@@ -23,11 +23,9 @@ Install npm and run npm start to run the program in the command line.
 ## Usage
 This API can be used to populate a database for an online store.
 
-* WalkThrough Video Part One: 
-https://drive.google.com/file/d/1V9_npNK5DDxUpsS2qLqEsev_9NEutX4A/view
+* WalkThrough Video: 
+https://drive.google.com/file/d/1ljdadqWauXj6Oalo71-iU4frf8PHadUQ/view
 
-* WalkThrough Video Part Two:
-https://drive.google.com/file/d/1HDltdY8FjbnSM6cYjBYCuQn_SSSYcIsf/view
 
 ## Contributing
 
